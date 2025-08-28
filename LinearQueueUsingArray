@@ -1,0 +1,51 @@
+import java.util.Scanner;
+ class LinearQueue {
+    private int[] queue;
+    private int front, rear, capacity;
+    LinearQueue(int size) {
+        capacity = size;
+        queue = new int[capacity];
+        front = 0;
+        rear = -1;
+    }
+    void enqueue(int data) {
+        if (rear == capacity - 1) {
+            System.out.println("Queue Overflow!");
+            return;
+        }
+        queue[++rear] = data;
+        System.out.println(data + " enqueued.");
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue Underflow!");
+            return;
+        }
+        System.out.println(queue[front++] + " dequeued.");
+    }
+    void peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return;
+        }
+        System.out.println("Front element is: " + queue[front]);
+    }
+
+    boolean isEmpty() {
+        return front > rear;
+    }
+}
+public class LinearQueueUsingArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        LinearQueue queue = new LinearQueue(5);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.peek();
+        queue.dequeue();
+        queue.peek();
+        sc.close();
+    }
+}
